@@ -20,6 +20,7 @@ class PokedexViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.delegate = self
         pokemonsAtrapados = obtenerPokemonsAtrapados()
         pokemonsNoAtrapados = obtenerPokemonsNoAtrapados()
+        //self.tableView.isEditing = true
     
     }
     

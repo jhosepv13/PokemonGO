@@ -16,6 +16,7 @@
 		EB00E61D21A5D814005A86E9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB00E61C21A5D814005A86E9 /* MapKit.framework */; };
 		EB00E61F21A5F5A8005A86E9 /* PokedexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB00E61E21A5F5A8005A86E9 /* PokedexViewController.swift */; };
 		EB00E62121A5F8B4005A86E9 /* Funciones.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB00E62021A5F8B4005A86E9 /* Funciones.swift */; };
+		EB00E62321A60A05005A86E9 /* PokePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB00E62221A60A05005A86E9 /* PokePin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		EB00E61C21A5D814005A86E9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		EB00E61E21A5F5A8005A86E9 /* PokedexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexViewController.swift; sourceTree = "<group>"; };
 		EB00E62021A5F8B4005A86E9 /* Funciones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funciones.swift; sourceTree = "<group>"; };
+		EB00E62221A60A05005A86E9 /* PokePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokePin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				EB00E60D21A5D090005A86E9 /* PokemonGO.xcdatamodeld */,
 				EB00E61E21A5F5A8005A86E9 /* PokedexViewController.swift */,
 				EB00E62021A5F8B4005A86E9 /* Funciones.swift */,
+				EB00E62221A60A05005A86E9 /* PokePin.swift */,
 			);
 			path = PokemonGO;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB00E62321A60A05005A86E9 /* PokePin.swift in Sources */,
 				EB00E60921A5D090005A86E9 /* ViewController.swift in Sources */,
 				EB00E61F21A5F5A8005A86E9 /* PokedexViewController.swift in Sources */,
 				EB00E60F21A5D090005A86E9 /* PokemonGO.xcdatamodeld in Sources */,
