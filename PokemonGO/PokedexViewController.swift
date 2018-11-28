@@ -60,5 +60,27 @@ class PokedexViewController: UIViewController, UITableViewDataSource, UITableVie
             return "No atrapdos"
         }
     }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == 0 {
+            return true
+        }else{
+            return false
+        }
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let pokemon = pokemonsAtrapados[indexPath.row]
+        print(pokemon)
+        do{
+        pokemon.atrapado = false
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        tableView.reloadData()
+        }
+        
+    }
+    
+
+
+    
+
 }

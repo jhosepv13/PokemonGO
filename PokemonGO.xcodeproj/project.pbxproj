@@ -68,10 +68,10 @@
 			children = (
 				EB00E60621A5D090005A86E9 /* AppDelegate.swift */,
 				EB00E60821A5D090005A86E9 /* ViewController.swift */,
-				EB00E60A21A5D090005A86E9 /* Main.storyboard */,
 				EB00E61021A5D090005A86E9 /* Assets.xcassets */,
 				EB00E61221A5D090005A86E9 /* LaunchScreen.storyboard */,
 				EB00E61521A5D090005A86E9 /* Info.plist */,
+				EB00E60A21A5D090005A86E9 /* Main.storyboard */,
 				EB00E60D21A5D090005A86E9 /* PokemonGO.xcdatamodeld */,
 				EB00E61E21A5F5A8005A86E9 /* PokedexViewController.swift */,
 				EB00E62021A5F8B4005A86E9 /* Funciones.swift */,
