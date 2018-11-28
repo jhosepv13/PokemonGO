@@ -39,7 +39,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.delegate = self
         mapView.showsUserLocation = true
         ubicacion.startUpdatingLocation()
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: {(timer) in
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in
             if let coord = self.ubicacion.location?.coordinate{
                 let pokemon = self.pokemons[Int(arc4random_uniform(UInt32(self.pokemons.count)))]
                 let pin = PokePin(coord:coord, pokemon: pokemon)
@@ -111,19 +111,42 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 if MKMapRectContainsPoint(mapView.visibleMapRect, MKMapPointForCoordinate(coord)){
                     print("Puede atrapar el pokemon")
                     
-                    //let pokemon = (view.annotation as! PokePin).pokemon
+                    var nombre = pokemon.nombre
+                    var pokemones = obtenerPokemonsAtrapados();
+                    var pok = pokemones[1];
+                    print(pok.nombre!)
+                    for pokemone in pokemones{
+                        if(nombre == pokemone.nombre){
+                            print("Ya atrapado el poquemon")
+                            let alertVC = UIAlertController(title: "Alerta!", message: "El pokemon ya está atrapado.", preferredStyle: .alert)
+                            let pokedexAccion = UIAlertAction(title: "Capturar", style: .default, handler: {(action) in
+                                mapView.removeAnnotation(view.annotation!)
+                                self.performSegue(withIdentifier: "pokedexSegue", sender: nil)
+                            })
+                            alertVC.addAction(pokedexAccion)
+                            
+                            let okAction = UIAlertAction(title: "Cancelar", style: .default, handler: {(action) in
+                                return
+                            })
+                            alertVC.addAction(okAction)
+                            self.present(alertVC, animated: true, completion: nil)
+                            return
+                        }
+                    }
+                    //print(obtenerPokemonsAtrapados())
                     pokemon.atrapado = true
                     (UIApplication.shared.delegate as! AppDelegate).saveContext()
                     mapView.removeAnnotation(view.annotation!)
                     
-                    let alertaVC = UIAlertController(title: "Felicidades!", message: "Atrapaste a un \(pokemon.nombre!)", preferredStyle: .alert)
-                    let pokedexAction = UIAlertAction(title: "Pokedex", style: .default, handler:{ (action) in
+                    let alertVC = UIAlertController(title: "Felicidades!", message: "Atrapaste a un \(pokemon.nombre!)", preferredStyle: .alert)
+                    let pokedexAccion = UIAlertAction(title: "Pokedex", style: .default, handler: {(action) in
                         self.performSegue(withIdentifier: "pokedexSegue", sender: nil)
-                        
                     })
-                    alertaVC.addAction(pokedexAction)
-                    let okAccion = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    alertaVC.addAction(okAccion)
+                    alertVC.addAction(pokedexAccion)
+                    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alertVC.addAction(okAction)
+                    self.present(alertVC, animated: true, completion: nil)
+                    
                     
                     
                 }else{

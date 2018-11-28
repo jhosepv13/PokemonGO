@@ -31,8 +31,10 @@ class PokedexViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
             return pokemonsAtrapados.count
+            
         }else{
             return pokemonsNoAtrapados.count
+            
         }
     }
     
@@ -40,8 +42,10 @@ class PokedexViewController: UIViewController, UITableViewDataSource, UITableVie
         let pokemon : Pokemon
         if indexPath.section == 0{
             pokemon = pokemonsAtrapados[indexPath.row]
+            
         }else{
             pokemon = pokemonsNoAtrapados[indexPath.row]
+
         }
         let cell = UITableViewCell()
         cell.textLabel?.text = pokemon.nombre
@@ -68,16 +72,35 @@ class PokedexViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            let pokemon = pokemonsAtrapados.remove(at: indexPath.row)
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            pokemon.atrapado = false
+            pokemonsAtrapados = obtenerPokemonsAtrapados()
+            pokemonsNoAtrapados = obtenerPokemonsNoAtrapados()
+            tableView.reloadData()
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        }
+    }
+    
+    /* Eliminar pokemon al solo tocar una celda
+     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pokemon = pokemonsAtrapados[indexPath.row]
         print(pokemon)
         do{
-        pokemon.atrapado = false
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        tableView.reloadData()
+            pokemon.atrapado = false
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            pokemonsAtrapados = obtenerPokemonsAtrapados()
+            pokemonsNoAtrapados = obtenerPokemonsNoAtrapados()
+            tableView.reloadData()
+        }catch{
+            
         }
         
-    }
+    }*/
     
 
 
